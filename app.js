@@ -11,25 +11,26 @@ app.set("view engine", "ejs");
 //SCHEMA SETUP
 var campgroundSchema =new mongoose.Schema({
     name: String,
-    image: String
+    image: String, 
+    description: String
 });
 
 var Campground = mongoose.model("Campground", campgroundSchema);
 
-Campground.create({
-    name: "Salmon Creek", 
-    image: "https://cdn.vox-cdn.com/thumbor/-JoPdcgAuLTUsWiDZ62CX4wb33k=/0x0:5225x3479/1200x800/filters:focal(2195x1322:3031x2158)/cdn.vox-cdn.com/uploads/chorus_image/image/54137643/camping_tents.0.jpg"
-    }, function(err, campground) {
-        if(err) {
-            console.lo(err);
-        } else {
-            console.log("NEW Campground created");
-            console.log(campground);
-        }
-    });
+// Campground.create({
+//     name: "Granit Hill", 
+//     image: "http://4.bp.blogspot.com/-0xecSPGE3fc/UnYi6NjL_AI/AAAAAAAAClw/hzeZky6mIrQ/s1600/DSC05653.JPG",
+//     description: "This is a huge granit hill, with no bathrooms. No water , beautifull granit!"
+//     }, function(err, campground) {
+//         if(err) {
+//             console.lo(err);
+//         } else {
+//             console.log("NEW Campground created");
+//             console.log(campground);
+//         }
+//     });
 
 var campgrounds = [
-        {name: "Granit Hill", image: "http://4.bp.blogspot.com/-0xecSPGE3fc/UnYi6NjL_AI/AAAAAAAAClw/hzeZky6mIrQ/s1600/DSC05653.JPG"},
         {name: "Mountain Goat's Rest", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsmXnA0nPXU41uscxsnX1loXVu9ddWJ2NrqS8UeOMTyySFLrUk"},
         {name: "Salmon Creek", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7m0WfJxvQvAZY09mFtZ9F1QxpLAPS3-dROt684wAABdLIGrwB"},
         {name: "Granit Hill", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD9ZYROUpiiOIDwL3PPcqGkIQCvsEE1VrZUWRz8vT0cERillht"},
@@ -43,23 +44,55 @@ app.get("/", function(req, res) {
     res.render("landing");
 });
 
+//INDEX ROUTE
 app.get("/campgrounds", function(req, res) {
-    res.render("campgrounds", {campgrounds: campgrounds});
+    //res.render("campgrounds", {campgrounds: campgrounds});
+    //get all campgrounds from DB
+    Campground.find({}, function(err, allcampgrounds) {
+        if(err) {
+            console.log("ERROR");
+        } else {
+            res.render("index", {campgrounds: allcampgrounds})
+        }
+    });
 });
 
+//CREATE ROUTE
 app.post("/campgrounds", function(req, res) {
     //get data from form add to campground array
     var name = req.body.name;
     var image = req.body.image;
-    var newCampgrounds = {name: name, image: image};
-    campgrounds.push(newCampgrounds);
-    res.redirect("/campgrounds")
-    //redirect to campgrounds page
+    var description = req.body.description;
+    var newCampgrounds = {name: name, image: image, description: description};
+    //create a new campgrounds and save it to DB
+    Campground.create(newCampgrounds, function(err, newlyCreated) {
+        if(err) {
+            console.log("ERROR");
+        } else {
+            //redirect to campgrounds page
+           res.redirect("/campgrounds"); 
+        }
+    });
 });
 
+
+//NEW - show form to create new campground
 app.get("/campgrounds/new", function(req, res) {
     res.render("new.ejs");
 });
+
+//SHOW -shows maore info about one campground
+app.get("/campgrounds/:id", function(req, res) {
+    //find the campground with provided id
+    Campground.findById(req.params.id, function(err, foundCampground) {
+        if(err) {
+            console.log(err);
+        } else {
+            //render show template with that campground
+            res.render("show", {campground: foundCampground});   
+        }
+    });
+})
 
 
 app.listen(process.env.PORT, process.env.IP, function() {
