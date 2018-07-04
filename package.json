@@ -9,6 +9,7 @@
   "author": "Andrei cirlan",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3"
+    "body-parser": "^1.18.3",
+    "mongoose": "^5.2.1"
   }
 }
