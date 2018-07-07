@@ -6,15 +6,15 @@ var Comment = require("./models/comment");
 var data = [
         { name : "Vatra Dornei",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShoGQ1I0DJwhu9KUNdit5bk5eIRIrdExF0u3rQZ1_NcswkbZFL",
-            description: "Summer place to go"
+            description: "Lorem Ipsum este pur şi simplu o machetă pentru text a industriei tipografice. Lorem Ipsum a fost macheta standard a industriei încă din secolul al XVI-lea, când un tipograf anonim a luat o planşetă de litere şi le-a amestecat pentru a crea o carte demonstrativă pentru literele respective. Nu doar că a supravieţuit timp de cinci secole, dar şi a facut saltul în tipografia electronică practic neschimbată. A fost popularizată în anii '60 odată cu ieşirea colilor Letraset care conţineau pasaje Lorem Ipsum, iar mai recent, prin programele de publicare pentru calculator, ca Aldus PageMaker care includeau versiuni de Lorem Ipsum."
         },
         { name : "Gura Humorului",
             image: "https://i.guim.co.uk/img/static/sys-images/Travel/Pix/pictures/2013/5/1/1367398625863/Newgale-campsite-Pembroke-008.jpg?w=620&q=55&auto=format&usm=12&fit=max&s=d8708c0675be2875b99d03b2b00254d5",
-            description: "Beautifull wood"
+            description: "Lorem Ipsum este pur şi simplu o machetă pentru text a industriei tipografice. Lorem Ipsum a fost macheta standard a industriei încă din secolul al XVI-lea, când un tipograf anonim a luat o planşetă de litere şi le-a amestecat pentru a crea o carte demonstrativă pentru literele respective. Nu doar că a supravieţuit timp de cinci secole, dar şi a facut saltul în tipografia electronică practic neschimbată. A fost popularizată în anii '60 odată cu ieşirea colilor Letraset care conţineau pasaje Lorem Ipsum, iar mai recent, prin programele de publicare pentru calculator, ca Aldus PageMaker care includeau versiuni de Lorem Ipsum."
         },
         { name : "Voronet",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ8WSavJdKSLdg8ihR28LlyaLU2aaB2hPOaHagw9YkKgQ_FTc3",
-            description: "Lot of churchess"
+            description: "Lorem Ipsum este pur şi simplu o machetă pentru text a industriei tipografice. Lorem Ipsum a fost macheta standard a industriei încă din secolul al XVI-lea, când un tipograf anonim a luat o planşetă de litere şi le-a amestecat pentru a crea o carte demonstrativă pentru literele respective. Nu doar că a supravieţuit timp de cinci secole, dar şi a facut saltul în tipografia electronică practic neschimbată. A fost popularizată în anii '60 odată cu ieşirea colilor Letraset care conţineau pasaje Lorem Ipsum, iar mai recent, prin programele de publicare pentru calculator, ca Aldus PageMaker care includeau versiuni de Lorem Ipsum."
         }
     ]
 
