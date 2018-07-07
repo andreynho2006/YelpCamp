@@ -1,5 +1,7 @@
 var mongoose = require("mongoose");
 var Campground = require("./models/campground");
+var Comment = require("./models/comment");
+
 
 var data = [
         { name : "Vatra Dornei",
@@ -26,11 +28,25 @@ function seedDB(){
         console.log("Remove campgrounds!");
         //add a few campgrounds
         data.forEach(function(seed) {
-            Campground.create(seed, function(err, data) {
+            Campground.create(seed, function(err, campground) {
                 if(err) {
                     console.log(err);
                 } else {
                     console.log("Added data");
+                    //create a comment
+                    Comment.create({
+                        text: "this place is great, but I wish there was internet",
+                        author: "Andrei Cirlan"
+                    }, function(err, comment){
+                       if(err) {
+                           console.log(err);
+                       } else {
+                           campground.comments.push(comment);
+                           campground.save();
+                           console.log("created new comment");
+                       }
+                    });
+                    
                 }
             });
         });
