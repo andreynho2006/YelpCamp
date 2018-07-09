@@ -27,7 +27,10 @@ passport.use(new Localstrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
 // Campground.create({
 //     name: "Granit Hill", 
 //     image: "http://4.bp.blogspot.com/-0xecSPGE3fc/UnYi6NjL_AI/AAAAAAAAClw/hzeZky6mIrQ/s1600/DSC05653.JPG",
@@ -61,9 +64,9 @@ app.get("/campgrounds", function(req, res) {
     //get all campgrounds from DB
     Campground.find({}, function(err, allcampgrounds) {
         if(err) {
-            console.log("ERROR");
+            console.log(err);
         } else {
-            res.render("campgrounds/index", {campgrounds: allcampgrounds})
+            res.render("campgrounds/index", {campgrounds: allcampgrounds});
         }
     });
 });
