@@ -7,7 +7,7 @@ var Comment = require("./models/comment");
 var seedDB = require("./seeds");
 var passport = require("passport");
 var Localstrategy = require("passport-local");
-var methodOverride = require("mothod-override");
+var methodOverride = require("method-override");
 var User = require("./models/user");
 
 //requiring routes
