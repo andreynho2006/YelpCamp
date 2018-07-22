@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
     "express-session": "^1.15.6",
     "method-override": "^2.3.10",
     "mongoose": "^5.2.1",

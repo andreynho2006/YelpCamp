@@ -9,6 +9,7 @@ var passport = require("passport");
 var Localstrategy = require("passport-local");
 var methodOverride = require("method-override");
 var User = require("./models/user");
+var flash = require("connect-flash");
 
 //requiring routes
 var commentRoutes = require("./routes/comments");
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
+app.use(flash());
 //seedDB(); seed the database
 
 // PASSPORT CONFIG
